@@ -1,5 +1,4 @@
-import os
-os.system("clear") #Per netejar el terminal.
+
 import matplotlib.pyplot as plt #Importar la llibreria matplotlib per a gràfics.
 import numpy as np #Importar la llibreria numpy per a càlcul numèric.
 import math as math
@@ -81,7 +80,7 @@ while True: # Bucle per repetir el programa.
         for i in range(len(coeficients)): # Recorrer els coeficients del polinomi.
             coef = coeficients[i] # Obtenir el coeficient actual.
             exp = grau - i # Calcular l'exponent del terme actual.
-            if exp != 0: # Si l'exponent és 0, el terme no contribueix a la derivada.
+            if exp != 0: #Si l'exponent és 0, el terme no contribueix a la derivada.
                 derivada_coefs.append(coef * exp) # Calcular el coeficient de la derivada.
         return derivada_coefs
 
@@ -140,11 +139,11 @@ while True: # Bucle per repetir el programa.
         print(f"f({a}) = {f(a)}")
         print(f"f({b}) = {f(b)}")
 
-    #Aplicar Newton-Raphson
+        #Aplicar Newton-Raphson
         x0 = (a + b) / 2 # Punt inicial per al mètode de Newton-Raphson.
         print(f"\nValor inicial x0 = {x0}")
         max_iter = 100 #El màxim de nombre de iteració.
-        tol = 1e-4 # Tolerància per a la convergència del mètode de Newton-Raphson.
+        tol = 1e-8 # Tolerància per a la convergència del mètode de Newton-Raphson.
 
 
         for i in range(max_iter): # Bucle per a les iteracions del mètode de Newton-Raphson.
@@ -156,11 +155,12 @@ while True: # Bucle per repetir el programa.
             x1 = x0 - fx / dfx # Calcular el nou valor de x utilitzant la fórmula de Newton-Raphson.
             print(f"Iteració {i+1}: x = {x1}") # Mostrar el valor de x en cada iteració.
             if abs(x1 - x0) < tol: # Si la diferència entre x1 i x0 és menor que la tolerància, hem trobat una arrel.
-                print(f"\nArrel aproximada trobada: x = {x1:.8f}") #".8f" serveix per que ems mostri 8 decimals.
+                print(f"\nArrel aproximada trobada: x = {x1:.10f}") #".10f" serveix per que ems mostri 10 decimals.
+                fx1 = f(x1)
+                print(f"f({x1:.10f}) = {fx1:.10f}")
                 break
-            x0 = x1
-        else:
-            print("\nNo s'ha aconseguit trobar una arrel amb la tolerància indicada.")
+            x0 = x1 
+
     else:
         print("\nNo s'ha trobat cap interval on hi hagi arrel.")
 
@@ -182,8 +182,13 @@ while True: # Bucle per repetir el programa.
     plt.grid() # Mostrar la quadrícula del gràfic.
     plt.legend() # Mostrar la llegenda del gràfic.      
     plt.show()# Mostrar el gràfic de la funció.
+    
 
-
+    # Preguntar a l'usuari si vol provar amb una altra funció.
     resposta = input("\nVols provar amb una altra funció? (s/n): ")
     if resposta.lower() != 's':# Si la resposta no és 's', sortim del bucle.
         print("Fi del programa.")
+        break
+
+
+    
