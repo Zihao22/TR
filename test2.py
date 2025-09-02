@@ -126,15 +126,17 @@ while True: # Bucle per repetir el programa.
         elif f2 == 0: # Si f(x + 1) és 0, hem trobat una arrel exacta.
             arrel_exacte = x + 1
             print(f"\nArrel exacta trobada: x = {arrel_exacte}")
+            a = b = arrel_exacte
             break
         elif f1 * f2 < 0:# Si el producte és negatiu, hi ha un canvi de signe i per tant hi ha una arrel.
             a, b = x, x + 1 
             break
-    
+
     if arrel_exacte is not None: # Si hem trobat una arrel exacta, no cal continuar buscant.
         print(f"\nArrel exacta trobada: x = {arrel_exacte}")
         a = b = arrel_exacte
-    if a is not None and b is not None: # Si no hem trobat cap interval, a i b seguiran sent None.
+
+    elif a is not None and b is not None: # Si hem trobat un interval on hi ha arrel.
         print(f"\nInterval trobat on hi ha arrel: [{a}, {b}]")
         print(f"f({a}) = {f(a)}")
         print(f"f({b}) = {f(b)}")
